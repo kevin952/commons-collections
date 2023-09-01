@@ -705,17 +705,18 @@ public abstract class AbstractMultiValuedMapTest<K, V> extends AbstractObjectTes
         map.put((K) "B", (V) "U");
         map.put((K) "B", (V) "V");
         map.put((K) "B", (V) "W");
+        String actualToString = map.toString();
         assertTrue(
-            "{A=[X, Y, Z], B=[U, V, W]}".equals(map.toString()) ||
-            "{B=[U, V, W], A=[X, Y, Z]}".equals(map.toString())
+            "{A=[X, Y, Z], B=[U, V, W]}".equals(actualToString) ||
+            "{B=[U, V, W], A=[X, Y, Z]}".equals(actualToString)
         );
 
         final MultiValuedMap<K, V> originalNull = null;
         assertThrows(NullPointerException.class, () -> map.putAll(originalNull),
                 "expecting NullPointerException");
         assertTrue(
-            "{A=[X, Y, Z], B=[U, V, W]}".equals(map.toString()) ||
-            "{B=[U, V, W], A=[X, Y, Z]}".equals(map.toString())
+            "{A=[X, Y, Z], B=[U, V, W]}".equals(actualToString) ||
+            "{B=[U, V, W], A=[X, Y, Z]}".equals(actualToString)
         );
 
         map.remove("A");
