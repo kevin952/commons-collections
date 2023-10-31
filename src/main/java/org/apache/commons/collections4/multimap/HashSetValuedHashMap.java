@@ -21,10 +21,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
-
 import org.apache.commons.collections4.MultiValuedMap;
+
 
 /**
  * Implements a {@code SetValuedMap}, using a {@link HashMap} to provide data
@@ -113,8 +113,8 @@ public class HashSetValuedHashMap<K, V> extends AbstractSetValuedMap<K, V>
     }
 
     @Override
-    protected HashSet<V> createCollection() {
-        return new HashSet<>(initialSetCapacity);
+    protected LinkedHashSet<V> createCollection() {
+        return new LinkedHashSet<>(initialSetCapacity);
     }
 
     private void writeObject(final ObjectOutputStream oos) throws IOException {
